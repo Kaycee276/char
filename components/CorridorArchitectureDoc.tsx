@@ -1,37 +1,28 @@
 'use client';
 
 import React, { useState } from 'react';
-import { 
-  CheckCircle, 
-  Layers
-} from 'lucide-react';
 
 export function CorridorArchitectureDoc() {
   const [activeTab, setActiveTab] = useState<'sdk' | 'ramps' | 'yield'>('sdk');
 
   return (
     <section className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-6">
-      <div className="neu-card rounded-3xl p-6 sm:p-8 border border-white/80 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300/40 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl neu-inset flex items-center justify-center text-indigo-600">
-              <Layers className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-slate-900">
-                Pollar Architectural Integration
-              </h2>
-              <p className="text-xs text-slate-600">
-                How char moves real money non-custodially on Stellar with zero user gas
-              </p>
-            </div>
+      <div className="neu-card rounded-3xl p-6 sm:p-8 border border-white/80 dark:border-white/10 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300/40 dark:border-slate-800/80 pb-4">
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+              Pollar Architectural Integration
+            </h2>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              How char moves real money non-custodially on Stellar with zero user gas
+            </p>
           </div>
 
           <div className="flex items-center neu-inset p-1 rounded-2xl">
             <button
               onClick={() => setActiveTab('sdk')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'sdk' ? 'neu-btn text-indigo-700' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'sdk' ? 'neu-btn text-indigo-700 dark:text-indigo-400 font-black' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Pollar SDK &amp; Auth
@@ -39,7 +30,7 @@ export function CorridorArchitectureDoc() {
             <button
               onClick={() => setActiveTab('ramps')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'ramps' ? 'neu-btn text-orange-700' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'ramps' ? 'neu-btn text-orange-700 dark:text-orange-400 font-black' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Bolivia Live BOB Ramp
@@ -47,7 +38,7 @@ export function CorridorArchitectureDoc() {
             <button
               onClick={() => setActiveTab('yield')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'yield' ? 'neu-btn text-emerald-700' : 'text-slate-600 hover:text-slate-900'
+                activeTab === 'yield' ? 'neu-btn text-emerald-700 dark:text-emerald-400 font-black' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Blend / DeFindex Earn
@@ -57,20 +48,20 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'sdk' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-700">
-              <h3 className="text-sm font-bold text-slate-900">
+            <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 Frictionless Onboarding Without Seed Phrases
               </h3>
               <p>
-                In emerging markets, seed phrases cause 80%+ drop-off. <code className="text-indigo-600 font-mono font-semibold">char</code> uses Pollar&apos;s embedded smart account infrastructure:
+                In emerging markets, seed phrases cause 80%+ drop-off. <code className="text-indigo-600 dark:text-indigo-400 font-mono font-semibold">char</code> uses Pollar&apos;s embedded smart account infrastructure:
               </p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" />
                   <span><strong>Biometric Passkeys &amp; Social Auth:</strong> Users sign via FaceID/TouchID or Google login. Private keys are encrypted non-custodially via AWS KMS.</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" />
                   <span><strong>Gas Sponsorship &amp; Reserves:</strong> Pollar provisions funding &amp; gas wallets on Stellar so users never need to purchase native XLM to pay network fees.</span>
                 </div>
               </div>
@@ -94,8 +85,8 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'ramps' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-700">
-              <h3 className="text-sm font-bold text-slate-900">
+            <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 Pollar&apos;s Live Bolivian Anchor (BOB Payouts)
               </h3>
               <p>
@@ -103,11 +94,11 @@ export function CorridorArchitectureDoc() {
               </p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0 mt-1.5" />
                   <span><strong>Direct Banking Settlement:</strong> Automatic transfer into Bolivian commercial accounts (Banco Unión, BMSC, BNB).</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0 mt-1.5" />
                   <span><strong>QR Simple Support:</strong> Instant interbank settlement using Bolivia&apos;s ubiquitous national QR payment standard.</span>
                 </div>
               </div>
@@ -130,20 +121,20 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'yield' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-700">
-              <h3 className="text-sm font-bold text-slate-900">
+            <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100">
                 Blend Lending &amp; DeFindex Vaults During Transit
               </h3>
               <p>
-                In international trade, escrow funds are typically dead capital for 1–3 weeks while goods are shipped across the Atlantic. <code className="text-emerald-600 font-mono font-semibold">char</code> turns transit time into income:
+                In international trade, escrow funds are typically dead capital for 1–3 weeks while goods are shipped across the Atlantic. <code className="text-emerald-600 dark:text-emerald-400 font-mono font-semibold">char</code> turns transit time into income:
               </p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" />
                   <span><strong>Live Compound Yield:</strong> Funds in escrow are deposited into Stellar&apos;s Blend lending pool earning ~7.8% APY.</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" />
                   <span><strong>Escrow Fee Offset:</strong> The interest generated during transit automatically discounts the logistics fee or rewards the buyer!</span>
                 </div>
               </div>

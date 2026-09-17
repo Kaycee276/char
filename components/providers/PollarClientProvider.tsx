@@ -3,8 +3,6 @@
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import { PollarProvider } from '@pollar/react';
 
-import { Zap } from 'lucide-react';
-
 const DEFAULT_KEY = process.env.NEXT_PUBLIC_POLLAR_PUBLISHABLE_KEY || 'pub_testnet_char_corridor_2026';
 
 // Complete app config matching Pollar's schema so modal renders without any network delay or crash
@@ -78,11 +76,11 @@ export function PollarClientProvider({ children }: { children: React.ReactNode }
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[#e9edf3] flex flex-col items-center justify-center text-slate-800 gap-4">
-        <div className="w-16 h-16 rounded-2xl neu-card flex items-center justify-center text-emerald-600 font-bold shadow-neu-sm animate-pulse">
-          <Zap className="w-7 h-7 text-emerald-600" />
+      <div className="min-h-screen bg-[var(--background)] flex flex-col items-center justify-center text-[var(--foreground)] gap-4">
+        <div className="w-14 h-14 rounded-2xl neu-card flex items-center justify-center text-emerald-600 dark:text-emerald-400 font-black text-xl tracking-tight shadow-neu-sm animate-pulse">
+          C
         </div>
-        <p className="font-semibold text-slate-700 text-sm tracking-wide">Loading char corridor...</p>
+        <p className="font-bold text-slate-700 dark:text-slate-300 text-sm tracking-wide">Loading char corridor...</p>
       </div>
     );
   }

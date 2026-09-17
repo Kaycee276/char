@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,29 +11,26 @@ const config: Config = {
     extend: {
       colors: {
         neu: {
-          base: "#e9edf3",
-          light: "#ffffff",
-          dark: "#b8c3d0",
-          pressed: "#d9e1eb",
+          base: "var(--neu-base)",
+          card: "var(--neu-base)",
+          text: "var(--foreground)",
+          muted: "var(--neu-muted)",
           accent: "#10b981", // Emerald yield
-          stellar: "#4f46e5", // Indigo/Stellar
-          bolivia: "#ea580c", // Andes terracotta / amber
-          text: "#0f172a",
-          muted: "#475569",
-          card: "#e9edf3",
+          stellar: "#6366f1", // Indigo/Stellar
+          bolivia: "#f97316", // Andes terracotta / amber
         },
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
       boxShadow: {
-        neu: "8px 8px 18px #c8d1dc, -8px -8px 18px #ffffff",
-        "neu-sm": "4px 4px 10px #c8d1dc, -4px -4px 10px #ffffff",
-        "neu-lg": "14px 14px 28px #c4cdd8, -14px -14px 28px #ffffff",
-        "neu-inset": "inset 4px 4px 8px #c8d1dc, inset -4px -4px 8px #ffffff",
-        "neu-inset-sm": "inset 2px 2px 5px #c8d1dc, inset -2px -2px 5px #ffffff",
-        "neu-inset-deep": "inset 6px 6px 12px #b4becb, inset -6px -6px 12px #ffffff",
-        "neu-glow": "0 0 20px rgba(16, 185, 129, 0.35), 6px 6px 14px #c8d1dc, -6px -6px 14px #ffffff",
-        "neu-amber": "0 0 16px rgba(234, 88, 12, 0.25), 6px 6px 14px #c8d1dc, -6px -6px 14px #ffffff",
+        neu: "8px 8px 18px var(--neu-shadow-dark), -8px -8px 18px var(--neu-shadow-light)",
+        "neu-sm": "4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light)",
+        "neu-lg": "14px 14px 28px var(--neu-shadow-dark), -14px -14px 28px var(--neu-shadow-light)",
+        "neu-inset": "inset 4px 4px 8px var(--neu-inset-dark), inset -4px -4px 8px var(--neu-inset-light)",
+        "neu-inset-sm": "inset 2px 2px 5px var(--neu-inset-dark), inset -2px -2px 5px var(--neu-inset-light)",
+        "neu-inset-deep": "inset 6px 6px 12px var(--neu-inset-dark), inset -6px -6px 12px var(--neu-inset-light)",
+        "neu-glow": "0 0 20px rgba(16, 185, 129, 0.35), 6px 6px 14px var(--neu-shadow-dark), -6px -6px 14px var(--neu-shadow-light)",
+        "neu-amber": "0 0 16px rgba(234, 88, 12, 0.25), 6px 6px 14px var(--neu-shadow-dark), -6px -6px 14px var(--neu-shadow-light)",
       },
       borderRadius: {
         "2xl": "1.25rem",

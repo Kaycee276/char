@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@pollar/react/styles.css";
 import { PollarClientProvider } from "@/components/providers/PollarClientProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,13 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#e9edf3] text-slate-800 min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)] min-h-screen transition-colors duration-200`}
       >
-        <PollarClientProvider>
-          {children}
-        </PollarClientProvider>
+        <ThemeProvider>
+          <PollarClientProvider>
+            {children}
+          </PollarClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
