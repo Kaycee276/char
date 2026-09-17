@@ -13,7 +13,8 @@ import {
   Loader2, 
   TrendingUp,
   Lock,
-  Sparkles
+  Sparkles,
+  X
 } from 'lucide-react';
 
 interface AfricanFundingModalProps {
@@ -131,34 +132,35 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-800">African Rail Payment Gateway</h3>
-              <p className="text-xs text-slate-500">Fund trade escrow via African local currency rails</p>
+              <h3 className="text-lg font-bold text-slate-900">African Rail Payment Gateway</h3>
+              <p className="text-xs text-slate-700 font-medium">Fund trade escrow via African local currency rails</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full neu-btn flex items-center justify-center text-slate-500 hover:text-slate-800 font-bold"
+            className="w-8 h-8 rounded-full neu-btn flex items-center justify-center text-slate-700 hover:text-slate-950 font-bold"
+            aria-label="Close modal"
           >
-            ✕
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Invoice Summary Pill */}
         <div className="neu-inset p-4 rounded-2xl flex items-center justify-between gap-4">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Invoice</span>
-            <p className="text-sm font-bold text-slate-800 truncate max-w-[240px]">{trade.title}</p>
-            <p className="text-xs text-slate-500">Seller: {trade.sellerName} ({trade.sellerCity}, Bolivia 🇧🇴)</p>
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-700">Invoice</span>
+            <p className="text-sm font-black text-slate-900 truncate max-w-[240px]">{trade.title}</p>
+            <p className="text-xs text-slate-700 font-medium">Seller: {trade.sellerName} ({trade.sellerCity}, Bolivia)</p>
           </div>
           <div className="text-right">
-            <span className="text-xs font-bold text-slate-500">Amount Due</span>
-            <p className="text-xl font-black text-slate-800">{formatCurrency(trade.amountUsdc, 'USDC')}</p>
+            <span className="text-xs font-bold text-slate-700">Amount Due</span>
+            <p className="text-xl font-black text-slate-950 font-mono">{formatCurrency(trade.amountUsdc, 'USDC')}</p>
           </div>
         </div>
 
         {/* Payment Method Selector */}
         <div className="space-y-3">
-          <label className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
+          <label className="text-xs font-bold uppercase tracking-wider text-slate-700 block">
             Select African Payment Rail:
           </label>
           <div className="grid grid-cols-3 gap-3">
@@ -170,14 +172,14 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
               }}
               className={`p-3 rounded-2xl flex flex-col items-center gap-2 transition-all ${
                 paymentMethod === 'MPESA'
-                  ? 'neu-inset border border-emerald-500/40 text-emerald-700 font-bold'
-                  : 'neu-btn text-slate-600'
+                  ? 'neu-inset border border-emerald-500/60 text-emerald-800 font-black'
+                  : 'neu-btn text-slate-700 font-semibold hover:text-slate-950'
               }`}
             >
               <Smartphone className="w-5 h-5 text-emerald-600" />
               <div className="text-center">
-                <div className="text-xs font-bold">M-Pesa 🇰🇪</div>
-                <div className="text-[10px] text-slate-500">STK Push (KES)</div>
+                <div className="text-xs font-bold">M-Pesa</div>
+                <div className="text-[10px] text-slate-600 font-medium">STK Push (KES)</div>
               </div>
             </button>
 
@@ -189,14 +191,14 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
               }}
               className={`p-3 rounded-2xl flex flex-col items-center gap-2 transition-all ${
                 paymentMethod === 'PAYSTACK'
-                  ? 'neu-inset border border-indigo-500/40 text-indigo-700 font-bold'
-                  : 'neu-btn text-slate-600'
+                  ? 'neu-inset border border-indigo-500/60 text-indigo-800 font-black'
+                  : 'neu-btn text-slate-700 font-semibold hover:text-slate-950'
               }`}
             >
               <Building2 className="w-5 h-5 text-indigo-600" />
               <div className="text-center">
-                <div className="text-xs font-bold">Nigeria 🇳🇬</div>
-                <div className="text-[10px] text-slate-500">Bank / Paystack</div>
+                <div className="text-xs font-bold">Nigeria Bank</div>
+                <div className="text-[10px] text-slate-600 font-medium">Paystack / NGN</div>
               </div>
             </button>
 
@@ -208,14 +210,14 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
               }}
               className={`p-3 rounded-2xl flex flex-col items-center gap-2 transition-all ${
                 paymentMethod === 'POLLAR'
-                  ? 'neu-inset border border-amber-500/40 text-amber-700 font-bold'
-                  : 'neu-btn text-slate-600'
+                  ? 'neu-inset border border-amber-500/60 text-amber-800 font-black'
+                  : 'neu-btn text-slate-700 font-semibold hover:text-slate-950'
               }`}
             >
               <Wallet className="w-5 h-5 text-amber-600" />
               <div className="text-center">
                 <div className="text-xs font-bold">Pollar Wallet</div>
-                <div className="text-[10px] text-slate-500">Stellar USDC</div>
+                <div className="text-[10px] text-slate-600 font-medium">Stellar USDC</div>
               </div>
             </button>
           </div>
@@ -226,28 +228,28 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
           <div className="space-y-4">
             {stkPushStep === 'idle' && (
               <div className="space-y-4">
-                <div className="neu-card-sm p-4 rounded-2xl border border-white/60 space-y-3">
+                <div className="neu-card-sm p-4 rounded-2xl border border-white/80 space-y-3">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500">M-Pesa Local Total:</span>
-                    <span className="text-base font-black text-emerald-700">
+                    <span className="text-slate-700 font-bold">M-Pesa Local Total:</span>
+                    <span className="text-base font-black text-emerald-800">
                       {formatCurrency(kesAmount, 'KES')}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-500">
+                  <div className="flex items-center justify-between text-[11px] text-slate-700 font-medium">
                     <span>Stellar Conversion:</span>
-                    <span>1 USDC = {RATES.KES.ratePerUsdc} KES</span>
+                    <span className="font-mono font-bold text-slate-900">1 USDC = {RATES.KES.ratePerUsdc} KES</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-600 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">
                     Kenyan Mobile Number (Safaricom)
                   </label>
                   <input
                     type="tel"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="w-full px-4 py-3 rounded-2xl neu-input text-slate-800 text-sm font-mono"
+                    className="w-full px-4 py-3 rounded-2xl neu-input text-slate-900 font-bold text-sm font-mono"
                     placeholder="+254 7..."
                   />
                 </div>
@@ -355,23 +357,23 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
           <div className="space-y-4">
             <div className="neu-inset p-4 rounded-2xl space-y-3 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-slate-500">Nigerian Naira Amount:</span>
-                <span className="text-base font-black text-indigo-700">
+                <span className="text-slate-700 font-bold">Nigerian Naira Amount:</span>
+                <span className="text-base font-black text-indigo-800 font-mono">
                   {formatCurrency(ngnAmount, 'NGN')}
                 </span>
               </div>
-              <div className="border-t border-slate-300/60 pt-2 space-y-1.5 font-mono text-slate-700">
+              <div className="border-t border-slate-300/80 pt-2 space-y-1.5 font-mono text-slate-800">
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Bank Name:</span>
-                  <span className="font-bold">Titan Trust / Wema Bank</span>
+                  <span className="text-slate-700 font-semibold">Bank Name:</span>
+                  <span className="font-bold text-slate-900">Titan Trust / Wema Bank</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Account Number:</span>
-                  <span className="font-bold text-indigo-600">0192837461</span>
+                  <span className="text-slate-700 font-semibold">Account Number:</span>
+                  <span className="font-bold text-indigo-700">0192837461</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Beneficiary:</span>
-                  <span>char Escrow Vault (Ref: {trade.id})</span>
+                  <span className="text-slate-700 font-semibold">Beneficiary:</span>
+                  <span className="font-bold text-slate-900">char Escrow Vault (Ref: {trade.id})</span>
                 </div>
               </div>
             </div>
@@ -380,7 +382,7 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
               type="button"
               onClick={handleSimulateBankTransfer}
               disabled={isProcessing}
-              className="w-full py-3.5 px-4 rounded-2xl neu-btn text-indigo-600 text-sm font-bold flex items-center justify-center gap-2 hover:text-indigo-700"
+              className="w-full py-3.5 px-4 rounded-2xl neu-btn text-indigo-700 hover:text-indigo-900 text-sm font-bold flex items-center justify-center gap-2"
             >
               {isProcessing ? (
                 <>
@@ -398,18 +400,18 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
         {/* Tab 3: Pollar Connected Wallet */}
         {paymentMethod === 'POLLAR' && (
           <div className="space-y-4">
-            <div className="neu-card-sm p-4 rounded-2xl border border-white/60 space-y-2 text-xs">
+            <div className="neu-card-sm p-4 rounded-2xl border border-white/80 space-y-2 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-slate-500">Source:</span>
-                <span className="font-bold text-slate-800">Connected Stellar Wallet</span>
+                <span className="text-slate-700 font-bold">Source:</span>
+                <span className="font-bold text-slate-900">Connected Stellar Wallet</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500">Asset:</span>
-                <span className="font-bold text-amber-600">USDC (Circle)</span>
+                <span className="text-slate-700 font-bold">Asset:</span>
+                <span className="font-bold text-amber-700">USDC (Circle)</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-slate-500">Transaction Fee:</span>
-                <span className="font-semibold text-emerald-600">Sponsored by Pollar ($0.00)</span>
+                <span className="text-slate-700 font-bold">Transaction Fee:</span>
+                <span className="font-bold text-emerald-700">Sponsored by Pollar ($0.00)</span>
               </div>
             </div>
 
@@ -425,7 +427,7 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4" /> Sign & Lock {formatCurrency(trade.amountUsdc, 'USDC')} in Escrow
+                  <Sparkles className="w-4 h-4" /> Sign &amp; Lock {formatCurrency(trade.amountUsdc, 'USDC')} in Escrow
                 </>
               )}
             </button>
@@ -433,12 +435,12 @@ export function AfricanFundingModal({ trade, isOpen, onClose, onSuccess }: Afric
         )}
 
         {/* Yield Explainer footer */}
-        <div className="neu-card-sm p-3.5 rounded-2xl flex items-center gap-3 text-xs text-slate-600 border border-emerald-500/20">
+        <div className="neu-card-sm p-3.5 rounded-2xl flex items-center gap-3 text-xs text-slate-800 border border-emerald-500/30">
           <div className="w-8 h-8 rounded-xl neu-inset flex items-center justify-center text-emerald-600 shrink-0">
             <TrendingUp className="w-4 h-4" />
           </div>
           <div>
-            <span className="font-bold text-slate-800">Automatic Yield Activation:</span> Once funded, USDC earns 7.8% APY via Blend lending pool during transit.
+            <span className="font-black text-slate-900">Automatic Yield Activation:</span> Once funded, USDC earns 7.8% APY via Blend lending pool during transit.
           </div>
         </div>
       </div>

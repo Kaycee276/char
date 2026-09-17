@@ -113,10 +113,10 @@ function CreateTradePageContent() {
               <div className="flex items-center gap-2 text-indigo-600 text-xs font-extrabold uppercase tracking-wider mb-1">
                 <PlusCircle className="w-4 h-4" /> Cross-Continental Settlement Contract
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                 Create New Export Invoice
               </h1>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-slate-700 font-medium mt-1">
                 Issue a direct payment contract connecting Bolivian exporters to African local currency rails with automated Blend yield escrow.
               </p>
             </div>
@@ -125,7 +125,7 @@ function CreateTradePageContent() {
               {/* Contract Goods Title & Category */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                     Contract Title / Commodity
                   </label>
                   <input
@@ -134,18 +134,18 @@ function CreateTradePageContent() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. 50 Bags Specialty Geisha Coffee (Micro-Lot #42)"
-                    className="w-full px-4 py-3 rounded-2xl neu-input text-slate-800 text-xs font-medium"
+                    className="w-full px-4 py-3 rounded-2xl neu-input text-slate-900 text-xs font-bold"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                     Category
                   </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as 'Agriculture' | 'Commodity' | 'Services' | 'Manufacturing')}
-                    className="w-full px-3 py-3 rounded-2xl neu-input text-slate-800 text-xs font-medium bg-[#e9edf3]"
+                    className="w-full px-3 py-3 rounded-2xl neu-input text-slate-900 text-xs font-bold bg-[#e9edf3]"
                   >
                     <option value="Agriculture">Agriculture / Food</option>
                     <option value="Commodity">Commodity / Raw</option>
@@ -157,7 +157,7 @@ function CreateTradePageContent() {
 
               {/* Description */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                   Delivery &amp; Milestone Terms
                 </label>
                 <textarea
@@ -165,24 +165,24 @@ function CreateTradePageContent() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Specify shipment specifications, bill of lading, or inspection requirements..."
-                  className="w-full px-4 py-3 rounded-2xl neu-input text-slate-800 text-xs font-medium resize-none"
+                  className="w-full px-4 py-3 rounded-2xl neu-input text-slate-900 text-xs font-semibold resize-none"
                 />
               </div>
 
               {/* Amount & Real-Time FX Conversion Matrix */}
               <div className="neu-inset p-5 rounded-3xl space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-600 block">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-700 block">
                   Settlement Valuation &amp; FX Rates
                 </span>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
                   {/* Settlement Principal USDC */}
                   <div className="neu-card p-4 rounded-2xl border border-white/80">
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-1">
+                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-slate-600 mb-1">
                       Invoice Principal (USDC)
                     </label>
                     <div className="flex items-center gap-1">
-                      <span className="text-base font-black text-slate-400">$</span>
+                      <span className="text-base font-black text-slate-600">$</span>
                       <input
                         type="number"
                         min={10}
@@ -190,37 +190,37 @@ function CreateTradePageContent() {
                         required
                         value={amountUsdc}
                         onChange={(e) => setAmountUsdc(Number(e.target.value))}
-                        className="w-full font-mono text-xl font-black text-slate-800 bg-transparent focus:outline-none"
+                        className="w-full font-mono text-xl font-black text-slate-950 bg-transparent focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* African Local Payer Amount */}
                   <div className="neu-card p-4 rounded-2xl border border-white/80">
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 mb-1">
+                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 mb-1">
                       African Buyer Rails ({buyerCountry})
                     </label>
-                    <p className="font-mono text-xl font-black text-emerald-700">
+                    <p className="font-mono text-xl font-black text-emerald-800">
                       {buyerRail === 'MPESA'
                         ? formatCurrency(localAfricanAmount, 'KES')
                         : buyerRail === 'PAYSTACK_NGN'
                         ? formatCurrency(localAfricanAmount, 'NGN')
                         : formatCurrency(localAfricanAmount, 'GHS')}
                     </p>
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-slate-600 font-semibold">
                       {buyerRail === 'MPESA' ? 'M-Pesa STK Push' : 'Local Bank Transfer'}
                     </span>
                   </div>
 
                   {/* Bolivian Merchant Cashout */}
                   <div className="neu-card p-4 rounded-2xl border border-white/80">
-                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-orange-700 mb-1">
+                    <label className="block text-[10px] font-extrabold uppercase tracking-wider text-orange-800 mb-1">
                       Bolivia Bank Payout (BOB)
                     </label>
-                    <p className="font-mono text-xl font-black text-orange-700">
+                    <p className="font-mono text-xl font-black text-orange-800">
                       {formatCurrency(bobAmount, 'BOB')}
                     </p>
-                    <span className="text-[10px] text-slate-400">
+                    <span className="text-[10px] text-slate-600 font-semibold">
                       Live Pollar Anchor (1 = 6.96 BOB)
                     </span>
                   </div>
@@ -230,43 +230,43 @@ function CreateTradePageContent() {
               {/* Parties Information */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Exporter (Bolivia) */}
-                <div className="neu-card-sm p-5 rounded-2xl border border-white/70 space-y-3">
+                <div className="neu-card-sm p-5 rounded-2xl border border-white/80 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-700 bg-orange-100/70 px-2.5 py-1 rounded-full">
-                      Bolivian Seller / Exporter 🇧🇴
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-800 bg-orange-100 px-2.5 py-1 rounded-full">
+                      Bolivian Seller / Exporter (Bolivia)
                     </span>
                     <Building2 className="w-4 h-4 text-orange-600" />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-600 block mb-1">Company / Legal Name</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1">Company / Legal Name</label>
                     <input
                       type="text"
                       value={sellerName}
                       onChange={(e) => setSellerName(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-medium"
+                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-bold text-slate-900"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-600 block mb-1">City</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1">City</label>
                     <input
                       type="text"
                       value={sellerCity}
                       onChange={(e) => setSellerCity(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-medium"
+                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-bold text-slate-900"
                     />
                   </div>
                 </div>
 
                 {/* Importer (Africa) */}
-                <div className="neu-card-sm p-5 rounded-2xl border border-white/70 space-y-3">
+                <div className="neu-card-sm p-5 rounded-2xl border border-white/80 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-2.5 py-1 rounded-full">
-                      African Buyer / Importer 🌍
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">
+                      African Buyer / Importer
                     </span>
                     <Smartphone className="w-4 h-4 text-emerald-600" />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-600 block mb-1">Destination Country</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1">Destination Country</label>
                     <div className="grid grid-cols-3 gap-2">
                       {(['Kenya', 'Nigeria', 'Ghana'] as const).map((c) => (
                         <button
@@ -275,8 +275,8 @@ function CreateTradePageContent() {
                           onClick={() => handleCountryChange(c)}
                           className={`py-1.5 rounded-xl text-xs font-bold transition-all ${
                             buyerCountry === c
-                              ? 'neu-inset text-emerald-700 font-black border border-emerald-500/40'
-                              : 'neu-btn text-slate-600'
+                              ? 'neu-inset text-emerald-800 font-black border border-emerald-500/50'
+                              : 'neu-btn text-slate-700 font-semibold hover:text-slate-950'
                           }`}
                         >
                           {c}
@@ -285,31 +285,31 @@ function CreateTradePageContent() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-slate-600 block mb-1">Company / Importer Name</label>
+                    <label className="text-xs font-bold text-slate-700 block mb-1">Company / Importer Name</label>
                     <input
                       type="text"
                       value={buyerName}
                       onChange={(e) => setBuyerName(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-medium"
+                      className="w-full px-3 py-2 rounded-xl neu-input text-xs font-bold text-slate-900"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Yield Staking Highlight */}
-              <div className="neu-card p-4 rounded-2xl border border-emerald-300/60 bg-emerald-50/40 flex items-center justify-between gap-4">
+              <div className="neu-card p-4 rounded-2xl border border-emerald-300/80 bg-emerald-50/60 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl neu-inset flex items-center justify-center text-emerald-600 shrink-0">
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-800">Blend Protocol Yield Activation</h4>
-                    <p className="text-[11px] text-slate-500">
+                    <h4 className="text-xs font-black text-slate-900">Blend Protocol Yield Activation</h4>
+                    <p className="text-[11px] text-slate-700 font-medium">
                       Once funded, the escrow automatically earns +7.8% APY during transit, offsetting logistics fees.
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-extrabold text-emerald-700 font-mono hidden sm:block">
+                <span className="text-xs font-black text-emerald-800 font-mono hidden sm:block">
                   +7.8% APY
                 </span>
               </div>

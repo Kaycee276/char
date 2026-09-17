@@ -18,10 +18,10 @@ export function CorridorArchitectureDoc() {
               <Layers className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-800">
+              <h2 className="text-xl font-bold text-slate-900">
                 Pollar Architectural Integration
               </h2>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-600">
                 How char moves real money non-custodially on Stellar with zero user gas
               </p>
             </div>
@@ -31,7 +31,7 @@ export function CorridorArchitectureDoc() {
             <button
               onClick={() => setActiveTab('sdk')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'sdk' ? 'neu-btn text-indigo-700' : 'text-slate-500 hover:text-slate-800'
+                activeTab === 'sdk' ? 'neu-btn text-indigo-700' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Pollar SDK &amp; Auth
@@ -39,7 +39,7 @@ export function CorridorArchitectureDoc() {
             <button
               onClick={() => setActiveTab('ramps')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'ramps' ? 'neu-btn text-orange-700' : 'text-slate-500 hover:text-slate-800'
+                activeTab === 'ramps' ? 'neu-btn text-orange-700' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Bolivia Live BOB Ramp
@@ -47,7 +47,7 @@ export function CorridorArchitectureDoc() {
             <button
               onClick={() => setActiveTab('yield')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                activeTab === 'yield' ? 'neu-btn text-emerald-700' : 'text-slate-500 hover:text-slate-800'
+                activeTab === 'yield' ? 'neu-btn text-emerald-700' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Blend / DeFindex Earn
@@ -57,8 +57,8 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'sdk' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-600">
-              <h3 className="text-sm font-bold text-slate-800">
+            <div className="space-y-4 text-xs text-slate-700">
+              <h3 className="text-sm font-bold text-slate-900">
                 Frictionless Onboarding Without Seed Phrases
               </h3>
               <p>
@@ -94,8 +94,8 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'ramps' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-600">
-              <h3 className="text-sm font-bold text-slate-800">
+            <div className="space-y-4 text-xs text-slate-700">
+              <h3 className="text-sm font-bold text-slate-900">
                 Pollar&apos;s Live Bolivian Anchor (BOB Payouts)
               </h3>
               <p>
@@ -130,8 +130,8 @@ export function CorridorArchitectureDoc() {
 
         {activeTab === 'yield' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-xs text-slate-600">
-              <h3 className="text-sm font-bold text-slate-800">
+            <div className="space-y-4 text-xs text-slate-700">
+              <h3 className="text-sm font-bold text-slate-900">
                 Blend Lending &amp; DeFindex Vaults During Transit
               </h3>
               <p>

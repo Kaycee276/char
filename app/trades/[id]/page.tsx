@@ -20,6 +20,7 @@ import {
   TrendingUp, 
   PackageCheck, 
   CheckCircle2, 
+  Check,
   Building2, 
   Smartphone
 } from 'lucide-react';
@@ -123,17 +124,17 @@ export default function TradeDetailPage() {
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-slate-300/40 pb-6">
               <div>
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full neu-inset text-slate-600">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full neu-inset text-slate-700">
                     {trade.category} • Ref: {trade.id}
                   </span>
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-slate-600 font-semibold">
                     Created {new Date(trade.createdAt).toLocaleDateString()}
                   </span>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-black text-slate-800 tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   {trade.title}
                 </h1>
-                <p className="text-xs text-slate-500 mt-1 max-w-2xl leading-relaxed">
+                <p className="text-xs text-slate-700 font-medium mt-1 max-w-2xl leading-relaxed">
                   {trade.description}
                 </p>
               </div>
@@ -141,23 +142,23 @@ export default function TradeDetailPage() {
               {/* Status Badge */}
               <div className="self-start">
                 {trade.status === 'CREATED' && (
-                  <span className="px-4 py-2 rounded-full text-xs font-black neu-inset text-amber-700 flex items-center gap-2">
+                  <span className="px-4 py-2 rounded-full text-xs font-black neu-inset text-amber-800 flex items-center gap-2">
                     <Clock className="w-4 h-4" /> Awaiting African Funding
                   </span>
                 )}
                 {trade.status === 'ESCROW_LOCKED' && (
-                  <span className="px-4 py-2 rounded-full text-xs font-black neu-card-sm text-emerald-700 bg-emerald-100/70 border border-emerald-300 flex items-center gap-2 animate-pulse">
+                  <span className="px-4 py-2 rounded-full text-xs font-black neu-card-sm text-emerald-800 bg-emerald-100 border border-emerald-300 flex items-center gap-2 animate-pulse">
                     <TrendingUp className="w-4 h-4 text-emerald-600" /> In Escrow &amp; Staked in Blend
                   </span>
                 )}
                 {trade.status === 'RELEASED' && (
-                  <span className="px-4 py-2 rounded-full text-xs font-black neu-card-sm text-indigo-700 bg-indigo-100/70 border border-indigo-300 flex items-center gap-2">
+                  <span className="px-4 py-2 rounded-full text-xs font-black neu-card-sm text-indigo-800 bg-indigo-100 border border-indigo-300 flex items-center gap-2">
                     <PackageCheck className="w-4 h-4 text-indigo-600" /> Delivered (Ready for BOB)
                   </span>
                 )}
                 {trade.status === 'OFFRAMPED_BOB' && (
-                  <span className="px-4 py-2 rounded-full text-xs font-black neu-inset text-orange-700 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-orange-600" /> Settled in BOB 🇧🇴
+                  <span className="px-4 py-2 rounded-full text-xs font-black neu-inset text-orange-800 flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-orange-600" /> Settled in BOB
                   </span>
                 )}
               </div>
@@ -171,15 +172,15 @@ export default function TradeDetailPage() {
                     <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all ${
                         step.done
-                          ? 'neu-btn bg-emerald-500 text-white font-black shadow-neu-sm'
-                          : 'neu-inset text-slate-400'
+                          ? 'neu-btn bg-emerald-600 text-white font-black shadow-neu-sm'
+                          : 'neu-inset text-slate-600 font-bold'
                       }`}
                     >
-                      {step.done ? '✓' : idx + 1}
+                      {step.done ? <Check className="w-3.5 h-3.5 stroke-[3]" /> : idx + 1}
                     </div>
                     <span
                       className={`text-xs ${
-                        step.done ? 'font-bold text-slate-800' : 'text-slate-400 font-medium'
+                        step.done ? 'font-black text-slate-900' : 'text-slate-600 font-semibold'
                       }`}
                     >
                       {step.label}
@@ -192,42 +193,42 @@ export default function TradeDetailPage() {
             {/* Principal & Compounding Escrow Yield Box */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="neu-card-sm p-5 rounded-2xl border border-white/80 space-y-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-600">
                   Escrow Principal
                 </span>
-                <p className="text-2xl sm:text-3xl font-black text-slate-800 font-mono">
+                <p className="text-2xl sm:text-3xl font-black text-slate-950 font-mono">
                   {formatCurrency(trade.amountUsdc, 'USDC')}
                 </p>
-                <p className="text-xs text-slate-500 font-mono">
+                <p className="text-xs text-slate-700 font-mono font-bold">
                   ≈ {formatCurrency(kesAmount, 'KES')}
                 </p>
               </div>
 
               {/* Blend Staking APY */}
-              <div className="neu-card-sm p-5 rounded-2xl border border-emerald-300/60 bg-emerald-50/40 space-y-1 neu-pulse">
+              <div className="neu-card-sm p-5 rounded-2xl border border-emerald-300/80 bg-emerald-50/60 space-y-1 neu-pulse">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800">
                     Live Blend Yield Accrued
                   </span>
                   <TrendingUp className="w-4 h-4 text-emerald-600" />
                 </div>
-                <p className="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">
+                <p className="text-2xl sm:text-3xl font-black text-emerald-700 font-mono">
                   +{trade.yieldEarnedUsdc.toFixed(4)} USDC
                 </p>
-                <p className="text-xs text-emerald-700 font-semibold">
+                <p className="text-xs text-emerald-800 font-bold">
                   Compounding live at +7.8% APY
                 </p>
               </div>
 
               {/* Bolivia BOB Cashout Estimate */}
               <div className="neu-card-sm p-5 rounded-2xl border border-white/80 space-y-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-700">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-800">
                   Bolivian Payout (BOB)
                 </span>
-                <p className="text-2xl sm:text-3xl font-black text-orange-600 font-mono">
+                <p className="text-2xl sm:text-3xl font-black text-orange-700 font-mono">
                   {formatCurrency(bobAmount, 'BOB')}
                 </p>
-                <p className="text-xs text-slate-500 font-mono">
+                <p className="text-xs text-slate-700 font-mono font-bold">
                   1 USDC = 6.96 BOB (Pollar Ramp)
                 </p>
               </div>
@@ -238,23 +239,23 @@ export default function TradeDetailPage() {
               {/* African Payer */}
               <div className="neu-inset p-5 rounded-3xl space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-2.5 py-1 rounded-full">
-                    African Importer 🌍
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">
+                    African Importer
                   </span>
                   <Smartphone className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div className="space-y-1.5 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Company:</span>
-                    <span className="font-bold text-slate-800">{trade.buyerName}</span>
+                    <span className="text-slate-700 font-semibold">Company:</span>
+                    <span className="font-black text-slate-900">{trade.buyerName}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Location:</span>
-                    <span className="font-medium text-slate-700">{trade.buyerCity}, {trade.buyerCountry}</span>
+                    <span className="text-slate-700 font-semibold">Location:</span>
+                    <span className="font-bold text-slate-800">{trade.buyerCity}, {trade.buyerCountry}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Payment Rail:</span>
-                    <span className="font-bold text-emerald-600">
+                    <span className="text-slate-700 font-semibold">Payment Rail:</span>
+                    <span className="font-black text-emerald-700">
                       {trade.buyerRail === 'MPESA' ? 'Safaricom M-Pesa (STK Push)' : 'Paystack Nigerian Bank'}
                     </span>
                   </div>
@@ -264,24 +265,24 @@ export default function TradeDetailPage() {
               {/* Bolivian Exporter */}
               <div className="neu-inset p-5 rounded-3xl space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-extrabold uppercase tracking-wider text-orange-700 bg-orange-100/70 px-2.5 py-1 rounded-full">
-                    Bolivian Exporter 🇧🇴
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-orange-800 bg-orange-100 px-2.5 py-1 rounded-full">
+                    Bolivian Exporter (BO)
                   </span>
                   <Building2 className="w-5 h-5 text-orange-600" />
                 </div>
                 <div className="space-y-1.5 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Exporter:</span>
-                    <span className="font-bold text-slate-800">{trade.sellerName}</span>
+                    <span className="text-slate-700 font-semibold">Exporter:</span>
+                    <span className="font-black text-slate-900">{trade.sellerName}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Location:</span>
-                    <span className="font-medium text-slate-700">{trade.sellerCity}, Bolivia</span>
+                    <span className="text-slate-700 font-semibold">Location:</span>
+                    <span className="font-bold text-slate-800">{trade.sellerCity}, Bolivia</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Settlement Bank:</span>
-                    <span className="font-bold text-orange-700">
-                      {trade.boliviaBankDestination?.bankName || 'Banco Unión 🇧🇴'}
+                    <span className="text-slate-700 font-semibold">Settlement Bank:</span>
+                    <span className="font-black text-orange-800">
+                      {trade.boliviaBankDestination?.bankName || 'Banco Unión'}
                     </span>
                   </div>
                 </div>
@@ -323,17 +324,17 @@ export default function TradeDetailPage() {
               )}
 
               {trade.status === 'OFFRAMPED_BOB' && (
-                <div className="neu-card p-5 rounded-2xl bg-orange-50/50 border border-orange-300 flex items-center justify-between">
+                <div className="neu-card p-5 rounded-2xl bg-orange-50/70 border border-orange-300 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-8 h-8 text-orange-600" />
                     <div>
-                      <h4 className="text-sm font-bold text-slate-800">Settled to Bolivian Bank</h4>
-                      <p className="text-xs text-slate-500">
+                      <h4 className="text-sm font-black text-slate-900">Settled to Bolivian Bank</h4>
+                      <p className="text-xs text-slate-700 font-medium">
                         {formatCurrency(trade.boliviaBankDestination?.bobAmount ?? bobAmount, 'BOB')} credited via Pollar live BOB ramp.
                       </p>
                     </div>
                   </div>
-                  <span className="text-xs font-mono font-bold text-orange-700">
+                  <span className="text-xs font-mono font-bold text-orange-800">
                     {trade.boliviaBankDestination?.bankName}
                   </span>
                 </div>

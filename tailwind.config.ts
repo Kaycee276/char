@@ -17,8 +17,8 @@ const config: Config = {
           accent: "#10b981", // Emerald yield
           stellar: "#4f46e5", // Indigo/Stellar
           bolivia: "#ea580c", // Andes terracotta / amber
-          text: "#1e293b",
-          muted: "#64748b",
+          text: "#0f172a",
+          muted: "#475569",
           card: "#e9edf3",
         },
         background: "var(--background)",

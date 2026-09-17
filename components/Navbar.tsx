@@ -15,8 +15,9 @@ import {
   Building2,
   FileText,
   Globe2,
-  Smartphone,
-  ShieldCheck
+  Smartphone, 
+  ShieldCheck,
+  X
 } from 'lucide-react';
 
 export function Navbar() {
@@ -68,14 +69,14 @@ export function Navbar() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl font-black tracking-tight text-slate-800">
+                  <span className="text-2xl font-black tracking-tight text-slate-900">
                     char<span className="text-emerald-600">.</span>
                   </span>
-                  <span className="px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full neu-inset text-emerald-700">
+                  <span className="px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded-full neu-inset text-emerald-800">
                     Africa ⇄ Bolivia
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
+                <p className="text-[11px] text-slate-600 font-semibold hidden sm:block">
                   Stellar Settlement &amp; Yield Escrow Corridor
                 </p>
               </div>
@@ -93,11 +94,11 @@ export function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                     isActive
-                      ? 'neu-btn text-slate-800 font-black'
-                      : 'text-slate-500 hover:text-slate-800'
+                      ? 'neu-btn text-slate-950 font-black'
+                      : 'text-slate-700 hover:text-slate-950 font-semibold'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-600' : 'text-slate-400'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-emerald-600' : 'text-slate-600'}`} />
                   <span>{link.label}</span>
                 </Link>
               );
@@ -177,21 +178,22 @@ export function Navbar() {
                   <Wallet className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-800">Connect to char</h3>
-                  <p className="text-xs text-slate-500">Non-custodial Stellar wallet access</p>
+                  <h3 className="text-base font-bold text-slate-900">Connect to char</h3>
+                  <p className="text-xs text-slate-700 font-medium">Non-custodial Stellar wallet access</p>
                 </div>
               </div>
               <button
                 onClick={() => setShowAuthChoiceModal(false)}
-                className="w-8 h-8 rounded-full neu-btn flex items-center justify-center text-slate-500 hover:text-slate-800 font-bold"
+                className="w-8 h-8 rounded-full neu-btn flex items-center justify-center text-slate-700 hover:text-slate-950 font-bold"
+                aria-label="Close modal"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Option 1: Native Pollar Modal */}
             <div className="space-y-3">
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-700 block">
                 Primary Login (Pollar SDK)
               </span>
               <button
@@ -212,39 +214,39 @@ export function Navbar() {
             </div>
 
             {/* Option 2: 1-Click Testnet Wallets for Quick Testing */}
-            <div className="space-y-3 pt-2 border-t border-slate-300/40">
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
+            <div className="space-y-3 pt-2 border-t border-slate-300/60">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-700 block">
                 Instant Hackathon Test Roles (1-Click)
               </span>
 
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => handleDemoLogin('importer')}
-                  className="p-3.5 rounded-2xl neu-btn text-left flex flex-col justify-between hover:text-emerald-700 transition-all"
+                  className="p-3.5 rounded-2xl neu-btn text-left flex flex-col justify-between hover:text-emerald-800 transition-all"
                 >
                   <div className="flex items-center justify-between w-full mb-1">
-                    <span className="text-[10px] font-extrabold uppercase text-emerald-700">Buyer 🇰🇪</span>
-                    <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-[10px] font-extrabold uppercase text-emerald-800">Buyer · KE</span>
+                    <Smartphone className="w-3.5 h-3.5 text-emerald-700" />
                   </div>
-                  <p className="text-xs font-bold text-slate-800">African Importer</p>
-                  <span className="text-[10px] text-slate-400 font-mono mt-1">Nairobi Hub</span>
+                  <p className="text-xs font-bold text-slate-900">African Importer</p>
+                  <span className="text-[10px] text-slate-600 font-mono mt-1 font-semibold">Nairobi Hub</span>
                 </button>
 
                 <button
                   onClick={() => handleDemoLogin('exporter')}
-                  className="p-3.5 rounded-2xl neu-btn text-left flex flex-col justify-between hover:text-orange-700 transition-all"
+                  className="p-3.5 rounded-2xl neu-btn text-left flex flex-col justify-between hover:text-orange-800 transition-all"
                 >
                   <div className="flex items-center justify-between w-full mb-1">
-                    <span className="text-[10px] font-extrabold uppercase text-orange-700">Seller 🇧🇴</span>
-                    <Building2 className="w-3.5 h-3.5 text-orange-600" />
+                    <span className="text-[10px] font-extrabold uppercase text-orange-800">Seller · BO</span>
+                    <Building2 className="w-3.5 h-3.5 text-orange-700" />
                   </div>
-                  <p className="text-xs font-bold text-slate-800">Bolivian Exporter</p>
-                  <span className="text-[10px] text-slate-400 font-mono mt-1">La Paz Coffee</span>
+                  <p className="text-xs font-bold text-slate-900">Bolivian Exporter</p>
+                  <span className="text-[10px] text-slate-600 font-mono mt-1 font-semibold">La Paz Coffee</span>
                 </button>
               </div>
             </div>
 
-            <div className="neu-card-sm p-3 rounded-xl text-[11px] text-slate-500 flex items-center gap-2">
+            <div className="neu-card-sm p-3 rounded-xl text-[11px] text-slate-700 font-medium flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Zero seed phrases. Gas fees are sponsored by Pollar on Stellar testnet.</span>
             </div>
