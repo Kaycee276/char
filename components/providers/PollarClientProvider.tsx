@@ -32,12 +32,18 @@ interface DemoAuthContextType {
   demoUser: { address: string; role: 'importer' | 'exporter' } | null;
   loginAsDemo: (role: 'importer' | 'exporter') => void;
   logoutDemo: () => void;
+  isAuthModalOpen: boolean;
+  openAuthModal: () => void;
+  closeAuthModal: () => void;
 }
 
 const DemoAuthContext = createContext<DemoAuthContextType>({
   demoUser: null,
   loginAsDemo: () => {},
   logoutDemo: () => {},
+  isAuthModalOpen: false,
+  openAuthModal: () => {},
+  closeAuthModal: () => {},
 });
 
 export const useDemoAuth = () => useContext(DemoAuthContext);
@@ -45,6 +51,10 @@ export const useDemoAuth = () => useContext(DemoAuthContext);
 export function PollarClientProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [demoUser, setDemoUser] = useState<{ address: string; role: 'importer' | 'exporter' } | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  const openAuthModal = () => setIsAuthModalOpen(true);
+  const closeAuthModal = () => setIsAuthModalOpen(false);
 
   useEffect(() => {
     setMounted(true);
@@ -86,7 +96,14 @@ export function PollarClientProvider({ children }: { children: React.ReactNode }
   }
 
   return (
-    <DemoAuthContext.Provider value={{ demoUser, loginAsDemo, logoutDemo }}>
+    <DemoAuthContext.Provider value={{ 
+      demoUser, 
+      loginAsDemo, 
+      logoutDemo,
+      isAuthModalOpen,
+      openAuthModal,
+      closeAuthModal
+    }}>
       <PollarProvider 
         client={{ apiKey: DEFAULT_KEY }}
         appConfig={DEFAULT_APP_CONFIG}

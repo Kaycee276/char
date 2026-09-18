@@ -4,6 +4,7 @@ import "./globals.css";
 import "@pollar/react/styles.css";
 import { PollarClientProvider } from "@/components/providers/PollarClientProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuthModal } from "@/components/AuthModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ThemeProvider>
           <PollarClientProvider>
             {children}
+            <AuthModal />
           </PollarClientProvider>
         </ThemeProvider>
       </body>
